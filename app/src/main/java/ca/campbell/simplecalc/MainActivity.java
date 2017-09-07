@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etNum1, etNum2;
     TextView result;
     double num1, num2;
+    boolean b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,76 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO: input validation: set text to show error
     public void addNums(View v) {
-        num1 = Double.parseDouble(etNum1.getText().toString());
-        num2 = Double.parseDouble(etNum2.getText().toString());
-        result.setText(Double.toString(num1 + num2));
+        try{
+            num1 = Double.parseDouble(etNum1.getText().toString());
+            num2 = Double.parseDouble(etNum2.getText().toString());
+            b = true;
+        }
+        catch(NumberFormatException e){
+            result.setText("Please enter a number");
+        }
+        finally {
+            if (b == true) {
+                result.setText(Double.toString(num1 + num2));
+            }
+        }
     }  //addNums()
+
+    public void substractNums(View v){
+        try{
+            num1 = Double.parseDouble(etNum1.getText().toString());
+            num2 = Double.parseDouble(etNum2.getText().toString());
+            b = true;
+        }
+        catch(NumberFormatException e){
+            result.setText("Please enter a number");
+        }
+        finally {
+            if(b == true) {
+        result.setText(Double.toString(num1 - num2));
+            }
+        }
+    }
+
+    public void divideNums(View v){
+        try{
+            num1 = Double.parseDouble(etNum1.getText().toString());
+            num2 = Double.parseDouble(etNum2.getText().toString());
+            b = true;
+        }
+        catch(NumberFormatException e){
+            result.setText("Please enter a number");
+        }
+        finally {
+            if(b == true) {
+                if(num2 == 0) {
+                   result.setText("No division by 0");
+                } else {
+                    result.setText(Double.toString(num1 / num2));
+                }
+            }
+        }
+    }
+
+    public void multiplyNums(View v){
+        try{
+            num1 = Double.parseDouble(etNum1.getText().toString());
+            num2 = Double.parseDouble(etNum2.getText().toString());
+            b = true;
+        }
+        catch(NumberFormatException e){
+            result.setText("Please enter a number");
+        }
+        finally {
+            if(b == true) {
+                result.setText(Double.toString(num1 * num2));
+            }
+        }
+    }
+
+    public void clearFields(View v){
+        etNum1.setText("");
+        etNum2.setText("");
+    }
 
 }
